@@ -21,58 +21,58 @@ export TEST_NAMESPACE=$NAMESPACE-ddd-test
 # oc delete Subscription openshift-pipelines-operator -n openshift-operators
 # oc delete csv $(oc get csv -n openshift-operators | grep openshift-pipelines-operato | awk '{print $1}') -n openshift-operators
 
-oc delete is -n $DEV_NAMESPACE --all
-oc delete is -n $TEST_NAMESPACE --all
+# oc delete is -n $DEV_NAMESPACE --all
+# oc delete is -n $TEST_NAMESPACE --all
 
-tkn resource delete -n $DEV_NAMESPACE --all -f
-tkn tasks delete -n $DEV_NAMESPACE --all -f
-tkn taskruns delete -n $DEV_NAMESPACE --all -f
-tkn pipelines delete -n $DEV_NAMESPACE --all -f
-tkn pipelineruns delete -n $DEV_NAMESPACE --all -f
-tkn eventlisteners delete -n $DEV_NAMESPACE --all -f
-tkn triggerbindings delete -n $DEV_NAMESPACE --all -f
-tkn triggertemplate delete -n $DEV_NAMESPACE --all -f
+# tkn resource delete -n $DEV_NAMESPACE --all -f
+# tkn tasks delete -n $DEV_NAMESPACE --all -f
+# tkn taskruns delete -n $DEV_NAMESPACE --all -f
+# tkn pipelines delete -n $DEV_NAMESPACE --all -f
+# tkn pipelineruns delete -n $DEV_NAMESPACE --all -f
+# tkn eventlisteners delete -n $DEV_NAMESPACE --all -f
+# tkn triggerbindings delete -n $DEV_NAMESPACE --all -f
+# tkn triggertemplate delete -n $DEV_NAMESPACE --all -f
 
-oc delete rolebinding tekton-triggers-rolebinding
-oc delete role tekton-triggers-role
-oc delete role $(oc get roles -n $DEV_NAMESPACE | grep role- | awk '{print $1}')
-oc delete rolebinding $(oc get rolebinding -n $DEV_NAMESPACE | grep test | awk '{print $1}')
+# oc delete rolebinding tekton-triggers-rolebinding
+# oc delete role tekton-triggers-role
+# oc delete role $(oc get roles -n $DEV_NAMESPACE | grep role- | awk '{print $1}')
+# oc delete rolebinding $(oc get rolebinding -n $DEV_NAMESPACE | grep test | awk '{print $1}')
 
-oc delete route el-main-trigger-route
+# oc delete route el-main-trigger-route
 
-oc delete integrationserver -n $DEV_NAMESPACE --all
-oc delete integrationserver -n $TEST_NAMESPACE --all
-oc delete queuemanager -n $DEV_NAMESPACE --all
-oc delete queuemanager -n $TEST_NAMESPACE --all
+# oc delete integrationserver -n $DEV_NAMESPACE --all
+# oc delete integrationserver -n $TEST_NAMESPACE --all
+# oc delete queuemanager -n $DEV_NAMESPACE --all
+# oc delete queuemanager -n $TEST_NAMESPACE --all
 
-oc delete configuration ace-policyproject-ddd
-oc delete configuration ace-policyproject-eei
+# oc delete configuration ace-policyproject-ddd
+# oc delete configuration ace-policyproject-eei
 
-oc -n $DEV_NAMESPACE policy remove-role-from-user registry-editor system:serviceaccount:$DEV_NAMESPACE:image-bot
-oc -n $TEST_NAMESPACE policy remove-role-from-user registry-editor system:serviceaccount:$DEV_NAMESPACE:image-bot
+# oc -n $DEV_NAMESPACE policy remove-role-from-user registry-editor system:serviceaccount:$DEV_NAMESPACE:image-bot
+# oc -n $TEST_NAMESPACE policy remove-role-from-user registry-editor system:serviceaccount:$DEV_NAMESPACE:image-bot
 
-oc delete sa cicd-ace-sa -n $DEV_NAMESPACE
-oc delete sa cicd-mq-sa -n $DEV_NAMESPACE
-oc delete sa cicd-pipeline -n $DEV_NAMESPACE
-oc delete sa image-bot -n $DEV_NAMESPACE
-oc delete sa cicd-test -n $DEV_NAMESPACE
-oc delete sa cicd-push-to-test -n $DEV_NAMESPACE
-oc delete sa cicd-deploy-to-test -n $DEV_NAMESPACE
-oc delete sa cicd-mq-deploy-in-test-sa -n $DEV_NAMESPACE
-oc delete sa cicd-ace-deploy-in-test-sa -n $DEV_NAMESPACE
-oc delete sa cicd-api-e2e-in-test-sa -n $DEV_NAMESPACE
+# oc delete sa cicd-ace-sa -n $DEV_NAMESPACE
+# oc delete sa cicd-mq-sa -n $DEV_NAMESPACE
+# oc delete sa cicd-pipeline -n $DEV_NAMESPACE
+# oc delete sa image-bot -n $DEV_NAMESPACE
+# oc delete sa cicd-test -n $DEV_NAMESPACE
+# oc delete sa cicd-push-to-test -n $DEV_NAMESPACE
+# oc delete sa cicd-deploy-to-test -n $DEV_NAMESPACE
+# oc delete sa cicd-mq-deploy-in-test-sa -n $DEV_NAMESPACE
+# oc delete sa cicd-ace-deploy-in-test-sa -n $DEV_NAMESPACE
+# oc delete sa cicd-api-e2e-in-test-sa -n $DEV_NAMESPACE
 
-oc delete secret er-pull-secret -n $DEV_NAMESPACE
-oc delete secret cicd-$DEV_NAMESPACE -n $DEV_NAMESPACE
+# oc delete secret er-pull-secret -n $DEV_NAMESPACE
+# oc delete secret cicd-$DEV_NAMESPACE -n $DEV_NAMESPACE
 
 
-echo -e "\n----------------------------------------------------------------------------------------------------------------------------------------------------------\n"
+# echo -e "\n----------------------------------------------------------------------------------------------------------------------------------------------------------\n"
 
 #for ddd
 ./DrivewayDentDeletion/Operators/prereqs.sh -n $NAMESPACE
 
-#for eei
-./EventEnabledInsurance/prereqs.sh -n $NAMESPACE
+# #for eei
+# ./EventEnabledInsurance/prereqs.sh -n $NAMESPACE
 
 echo -e "\n----------------------------------------------------------------------------------------------------------------------------------------------------------\n"
 
